@@ -142,27 +142,35 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-newpage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-EasyX学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/09/28/newpage/">newpage</a>
+      <a class="article-title" href="/2024/10/09/EasyX%E5%AD%A6%E4%B9%A0/">EasyX学习</a>
     </h1>
   
 
         
-        <a href="/2024/09/28/newpage/" class="archive-article-date">
-  	<time datetime="2024-09-28T03:43:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-28</time>
+        <a href="/2024/10/09/EasyX%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2024-10-09T05:52:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本计划基于<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/130364187">这篇文章</a>的学习路线以及自身学习经历制定</p>
+        <ol>
+<li>在执行鼠标操作或者键盘操作时，EasyX会将其放置在一个队列中，可以调用peekmessage()来调取这个队列，如果队列有操作的话就会返回true</li>
+<li>BeginBatchDraw()会新建一块画布，FlushBatchDraw()会交换这个画布，之后的绘制会在新建画布上实现，这样在交换以后就省略了清空画布的效果，以此来避免闪屏</li>
+<li>学会如何确定刷新的帧率（GetTickCount()）</li>
+<li>加载人物动画，使用计时器而不是计数器</li>
+<li>移动手感优化</li>
+<li>播放背景音乐</li>
+<li>仅加载一个图片资源，其他相同图片都是由这个图片资源复制粘贴得到</li>
+</ol>
 
       
 
@@ -175,7 +183,399 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2024/09/28/newpage/">展开全文 >></a>
+          <a class="article-more-a" href="/2024/10/09/EasyX%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-面经" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/10/08/%E9%9D%A2%E7%BB%8F/">面经</a>
+    </h1>
+  
+
+        
+        <a href="/2024/10/08/%E9%9D%A2%E7%BB%8F/" class="archive-article-date">
+  	<time datetime="2024-10-08T01:55:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-C-语法"><a href="#C-C-语法" class="headerlink" title="C&#x2F;C++语法"></a>C&#x2F;C++语法</h1><p>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30007037">内存对齐</a><br>规则：<br>(1) 结构体第一个成员的偏移量（offset）为0，以后每个成员相对于结构体首地址的 offset 都是该成员大小与有效对齐值中较小那个的整数倍，如有需要编译器会在成员之间加上填充字节。<br>(2) 结构体的总大小为 有效对齐值 的整数倍，如有需要编译器会在最末一个成员之后加上填充字节。</p>
+<p>2.指针</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void testPTR(int* p) &#123;</span><br><span class="line">	int a = 12;</span><br><span class="line">	p = &amp;a;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void testREFF(int* p) &#123;</span><br><span class="line">	int a = 12;</span><br><span class="line">	*p = a;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	int a = 10;</span><br><span class="line">	int* b = &amp;a;</span><br><span class="line">	testPTR(b);//改变指针指向，但是没改变指针的所指的内容</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;// 10</span><br><span class="line">	cout &lt;&lt; *b &lt;&lt; endl;// 10</span><br><span class="line"></span><br><span class="line">	a = 10;</span><br><span class="line">	testREFF(b);</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;//12</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里int* p 是b的一个副本，两者会指向同一片地址空间，但是改变p的指向并不会改变b的指向</p>
+<p>3.堆<br>堆是用指针实现的，堆容易产生碎片空间</p>
+<p>4.指针例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *p[10]</span><br><span class="line">int (*p)[10]</span><br><span class="line">int *p(int)</span><br><span class="line">int (*p)(int)</span><br></pre></td></tr></table></figure>
+<p>int *p[10]表示指针数组，强调数组概念，是一个数组变量，数组大小为10，数组内每个元素都是指向int类型的指针变量。</p>
+<p>int (*p)[10]表示数组指针，强调是指针，只有一个变量，是指针类型，不过指向的是一个int类型的数组，这个数组大小是10。</p>
+<p>int *p(int)是函数声明，函数名是p，参数是int类型的，返回值是int *类型的。</p>
+<p>int (*p)(int)是函数指针，强调是指针，该指针指向的函数具有int类型参数，并且返回值是int类型的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/10/08/%E9%9D%A2%E7%BB%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-碎片知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/10/04/%E7%A2%8E%E7%89%87%E7%9F%A5%E8%AF%86/">碎片知识</a>
+    </h1>
+  
+
+        
+        <a href="/2024/10/04/%E7%A2%8E%E7%89%87%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2024-10-04T00:38:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="认知负荷理论"><a href="#认知负荷理论" class="headerlink" title="认知负荷理论"></a>认知负荷理论</h1><h2 id="三大模块"><a href="#三大模块" class="headerlink" title="三大模块"></a>三大模块</h2><ol>
+<li>减少冗余</li>
+<li>学会分割</li>
+<li>交替实例</li>
+</ol>
+<h1 id="如何激活大脑"><a href="#如何激活大脑" class="headerlink" title="如何激活大脑"></a>如何激活大脑</h1><p>大脑的两大网络</p>
+<p>默认模式网络（DMN）：<br>活跃时：当大脑没有专门任务时，这些脑区会活跃起来。它们使大脑进入自由遐想的状态，如回忆、幻想、内省等。<br>特点：低能耗，增强自我反省和创造力，但也容易导致思维涣散、精神内耗。<br>积极任务网络（ATN）：<br>活跃时：当需要集中注意力处理外部任务时，这些脑区会活跃起来。它们帮助你聚焦、逻辑思维和应对挑战。<br>特点：高能耗，增强专注力、逻辑能力和任务处理能力，但会抑制内在思维的干扰。</p>
+<p>如何科学切换大脑状态</p>
+<ol>
+<li>心智借力</li>
+</ol>
+<p>方法：通过观看与工作任务相关的优质内容（而不是生硬的应试课程）来激活积极任务网络。<br>操作步骤：<br>选择有主题、逻辑清晰的内容（例如：有针对性的课程或讲座），这些内容能够引导你集中注意力于特定目标。<br>通过这种方式，大脑会自动调整到目标导向的状态，进而进入积极任务网络。<br>例如：在准备进行深度工作之前，观看几分钟相关领域的讲座或视频，帮助你“热身”。</p>
+<p>效果：这种方法通过利用镜像神经元，能够让你的大脑迅速从默认模式网络切换到积极任务网络，提高专注力和生产力。</p>
+<ol start="2">
+<li>大脑订单</li>
+</ol>
+<p>方法：将目标明确化，拆解为具体、可量化的行动步骤，让大脑能够清晰理解任务需求。<br>操作步骤：<br>可量化：设定清晰的量化目标（例如：阅读一定数量的页数）。<br>具体化：将任务拆解为具体的行动步骤（例如：今天阅读某本书的前70页）。<br>可验收：确保任务可以被评估和检查（例如：完成后提炼出几个有价值的观点）。</p>
+<p>效果：通过这种明确的目标设定，大脑能够准确理解任务需求，并进入积极任务网络，增强专注和效率。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>思维沉不下去、状态不佳通常是由于默认模式网络过度活跃，抑制了积极任务网络。<br>心智借力：通过观看相关优质内容来激活积极任务网络，帮助你快速切换到工作状态。<br>大脑订单：将任务具体化、量化，使大脑能够清楚理解并集中资源完成任务。</p>
+<h1 id="增加自控力"><a href="#增加自控力" class="headerlink" title="增加自控力"></a>增加自控力</h1><p>艾瑞斯总结10法：一、冥想增灰质；二、放慢呼吸激活皮质；三、绿色锻炼供能增强自控；四、充足休息恢复意志；五、减少决策保意志力；六、优先重要事项；七、寻找榜样融入强自控群；八、控制冲动观情绪心理暗示；九、取消道德许可牢记目标；十、自我原谅适度放松。</p>
+<h1 id="增加执行力"><a href="#增加执行力" class="headerlink" title="增加执行力"></a>增加执行力</h1><ol>
+<li>学习方法，按丢脸的来</li>
+<li>学习进度，按丢脸的来</li>
+<li>学习计划，按丢脸的来</li>
+</ol>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>要知道自己真正想要的是什么，朝目标前进，不要在意他人的目光</p>
+<h1 id="经济"><a href="#经济" class="headerlink" title="经济"></a>经济</h1><p>信贷， 去杠杆化， 四大方法来和谐去杠杆化 有三个是通货紧缩， 一个是通货膨胀<br>三条经验法则</p>
+<ol>
+<li>不要让债务的增长速度超过收入</li>
+<li>不要让收入的增长速度，超过生产率，这会让你失去竞争力（德不配位）</li>
+<li>尽一切努力提高生产率</li>
+</ol>
+<h1 id="chatGPT使用"><a href="#chatGPT使用" class="headerlink" title="chatGPT使用"></a>chatGPT使用</h1><h2 id="批判性思维"><a href="#批判性思维" class="headerlink" title="批判性思维"></a>批判性思维</h2><ol>
+<li>针对一个观点的论题，证据事实，结论，推理解释的过程，假设，概念，立场七个部分进行思考和批判<br>最容易批判的是概念</li>
+<li>苏格拉底提问法</li>
+<li>针对论证错误提问</li>
+<li>从创新的角度提问（延续性创新）</li>
+</ol>
+<h2 id="结构化思考"><a href="#结构化思考" class="headerlink" title="结构化思考"></a>结构化思考</h2><p>使用现成的思维模型<br>MECE分类方法 顺序法， 要素法， 矩阵法， 二分法， 公式法</p>
+<p>将显性知识内化为隐性知识<br>可以模拟不同的人群在chatGPT里进行讨论<br><img src="/image.png" alt="alt text"><br><img src="/image-1.png" alt="alt text"><br><img src="/image-4.png" alt="alt text"><br><img src="/image-2.png" alt="alt text"><br><img src="/image-3.png" alt="alt text"></p>
+<h2 id="如何成为一个很厉害的人？"><a href="#如何成为一个很厉害的人？" class="headerlink" title="如何成为一个很厉害的人？"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mE11YtEzZ/?spm_id_from=333.337.search-card.all.click&vd_source=72b4b8edb4807f1f7c3342f45792e593">如何成为一个很厉害的人？</a></h2><p>从我不可能到我该如何 -&gt; 计算每个问题的成本与风险（了解成本，接受风险） -&gt; 切忌闷头努力（时间导向，反馈很长，消磨耐心信心） -&gt; 频率导向(大目标拆分成小目标，并积极给予正反馈)</p>
+<blockquote>
+<p>这种拨云见日的感觉，就是思维的艺术。它赋予我们与过去和解的力量，也点燃了未来旅途中的炬火，在漫漫长夜中，指引我们走过蜿蜒崎岖的人生之路</p>
+</blockquote>
+<h2 id="大问题"><a href="#大问题" class="headerlink" title="大问题"></a>大问题</h2><ol>
+<li>经不起反驳和无法与其他正确观点相联系的观念是错误的</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/10/04/%E7%A2%8E%E7%89%87%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-英语学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/09/28/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/">英语学习</a>
+    </h1>
+  
+
+        
+        <a href="/2024/09/28/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2024-09-28T12:07:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="9-28"><a href="#9-28" class="headerlink" title="9.28"></a>9.28</h2><p>overhead, verdant pathway, pillar，subtle</p>
+<h2 id="9-29"><a href="#9-29" class="headerlink" title="9.29"></a>9.29</h2><p>canonical, archiect, screw</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/09/28/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/09/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    </h1>
+  
+
+        
+        <a href="/2024/09/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2024-09-28T07:21:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jyyyyds"><a href="#jyyyyds" class="headerlink" title="jyyyyds"></a>jyyyyds</h1><h2 id="并发性"><a href="#并发性" class="headerlink" title="并发性"></a>并发性</h2><p>Peterson 算法<br>可以将脚本移到&#x2F;usr&#x2F;local&#x2F;bin构造命令行命令<br>自旋锁，软件层面实现原子性<br>RCU（Read-Copy-Update）实现，用于读操作远大于写操作时</p>
+<p>调试理论给了大家在遇到 “任何问题” 时候 self-check 的列表：</p>
+<ol>
+<li><p>是怎样的程序 (状态机) 在运行？</p>
+</li>
+<li><p>我们遇到了怎样的 failure？</p>
+</li>
+<li><p>我们能从状态机的运行中从易到难得到什么信息？</p>
+</li>
+<li><p>如何二分检查这些信息和 error 之间的关联？</p>
+</li>
+<li><p>写好的代码（AI读得懂的）</p>
+</li>
+<li><p>做好测试 + 添加断言</p>
+</li>
+</ol>
+<p>多处理器系统是会发生多个程序同时运行的，单纯关中断只能实现一个处理器的stop the world，所以需要关中断和自旋同时使用</p>
+<h3 id="M2实验总结："><a href="#M2实验总结：" class="headerlink" title="M2实验总结："></a>M2实验总结：</h3><p>实现了简化的协程切换<br>通过setjmp实现上下文切换<br>对于每个协程都有四个状态：new, run, wait, dead<br>对于new状态，需要用汇编代码来进行初始化运行函数，在传递栈的时候一定要小心<br>由于我们的栈是实现在co数据结构中，实际上是在堆中分配空间，栈又是自上而下分配空间的，所以需要传递栈顶地址，用代码实现就是 stack+stack_size - sizeof(void*)，如果不减去这个void*的大小的话，会直接segment fault.(栈顶地址最好要对齐16字节，每个操作系统要求的对齐不一样)<br>可以通过void ** retfun&#x3D; base-sizeof(void <em>)，</em>retfun &#x3D; co_finish;当func执行完毕后，程序流就会跳转到 co_finish 函数。（奇怪，看到另一个实现里直接传递stack[stack_size]也不会导致segment fault,这部分还是没搞懂）<br>两个不同的实现,<a target="_blank" rel="noopener" href="https://github.com/SiyuanYue/NJUOSLab-M2-libco/blob/master/libco/co.c">第一个</a>,<a target="_blank" rel="noopener" href="https://gitee.com/HHHHao-s/os/blob/main/libco/co.c#">第二个</a></p>
+<p>深入理解了上下文切换<br>在进行实验的过程中，还学会了用python配合makefile编写简化的gdb调试代码</p>
+<h2 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h2><p>多线程程序有多个栈</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/09/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-LeetCode刷题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/09/28/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">LeetCode刷题记录</a>
+    </h1>
+  
+
+        
+        <a href="/2024/09/28/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2024-09-28T03:43:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>跟随灵神和代码随想录刷题几月有余，一直兴趣缺缺，不太明白刷题的意义，后来发现“程序&#x3D;数据结构+算法”这句话说得是真不错，于是在粗略了解完大概的类型以后，打算按照灵神的方法从1500分开始尝试自己刷题。</p>
+<h2 id="新颖的方法"><a href="#新颖的方法" class="headerlink" title="新颖的方法"></a>新颖的方法</h2><p>1.可以用一个数组记录下标以此节省空间，一般配合iota使用<br>2.正难则反<br>3.分类讨论+动态规划:<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-strength-of-a-group/description/">2708. 一个小组的最大实力值</a><br>4.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sum-of-subarray-ranges/description/">2104. 子数组范围和</a>,<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/check-if-a-string-contains-all-binary-codes-of-size-k/description/">1461. 检查一个字符串是否包含所有长度为 K 的二进制子串</a>答案没看懂<br>5.一般地，涉及到取模的题目，通常会用到如下等式：<br>(a+b) mod m&#x3D;((a mod m)+(b mod m)) mod m<br>(a⋅b) mod m&#x3D;((a mod m)⋅(b mod m)) mod m<br>6.二分查找（感觉需要花时间细看）<br>大于等于 -&gt; 开区间返回right, 其他两种返回left, 判断条件是if (mid &lt; target)<br>大于 -&gt; 大于等于 x+1<br>小于 -&gt; 大于等于 x 然后 -1<br>小于等于 -&gt; 大于 x 然后 -1<br>6.<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/CaOJ45/">位运算技巧</a><br>7.对字符串的话，分桶很有用 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-matching-subsequences/description/">729.匹配子数列的单词数</a><br>8.寻找质数 -&gt; 线性筛（欧拉筛）， 埃氏筛<br>9.每个switch中的case共享同一个作用域</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/09/28/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">展开全文 >></a>
         </p>
       
 
